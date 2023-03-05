@@ -21,12 +21,11 @@ def main():
         newInput = input().strip().upper()
         if newInput == "I":
             n = int(input())
-            parents = list(map(int,input()))
+            parents = list(map(int,input().split()))
             break
         elif newInput == "F":
             fileName = input()
             if "a" in fileName:
-                print()
                 return 1
             try:
                 with open(fileName) as file:

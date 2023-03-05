@@ -5,21 +5,37 @@ import threading
 
 
 def compute_height(n, parents):
-    # Write this function
-    max_height = 0
-    # Your code here
+    tik={}
+    def height(i):
+        if i in tik:
+            return tik[i]
+        
+        if i==-1:
+            return 0
+        kop= height(parents[i]) + 1
+        tik[i]=kop
+        return kop
+    
+    max_height=0
+    
+    
+    for i in range(n):
+        max_height=max(max_height, height(i))
     return max_height
 
-
 def main():
-    # implement input form keyboard and from files
-    
-    # let user input file name to use, don't allow file names with letter a
-    # account for github input inprecision
-    
-    # input number of elements
-    # input values in one variable, separate with space, split these values in an array
-    # call the function and output it's result
+        newinput = input()
+        if "I" in newinput:
+            a = int(input())
+            b = list(map(int,input().split()))
+            print(compute_height(a,b))
+        if "F" in newinput:
+            filename = input()
+            if "a" not in filename:
+                with open("./test/"+filename, "r") as files:
+                    c = int(files.readline())
+                    d = list(map(int, files.readline().split()))
+                    print(compute_height(c,d))
 
 
 # In Python, the default limit on recursion depth is rather low,

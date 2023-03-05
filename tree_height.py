@@ -30,12 +30,12 @@ def main():
         
         newInput = input()
 
-        if newInput == "I":
+        if "I" in newInput:
             n = int(input())
             parents = list(map(int,input().split()))
             print(compute_height(n, parents))
 
-        if newInput == "F":
+        if "F" in newInput:
             fileName = input()
             if "a" not in fileName:
                 with open("./test/" + fileName, "r") as files:

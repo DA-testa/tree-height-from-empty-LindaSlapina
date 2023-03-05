@@ -34,7 +34,6 @@ def main():
                     parents = list(map(int, file.readline().split()))
                     break
             except FileNotFoundError:
-                print()
                 return 1 
 
     height = compute_height(n , parents)

@@ -5,27 +5,39 @@ import threading
 
 
 def compute_height(n, parents):
-    def height(node):
-        if node not in cache:
-            if parents[node] == -1:
-                cache[node] = 1
-            else:
-                cache[node] = 1 + height(parents[node])
-        return cache[node]
+    heights = [0] * n
+    max_height =0
 
-    cache = {}
-    return max(height(node) for node in range(len(parents)))
+    for i in range(n):
+        parent = parents[i]
+        height = 1
+         
+        while parent != -1:
+              if heights[parent] != 0:
+                   height = height + heights[parent]
+                   break
+              height = height +1
+
+              parent = parents[parent]
+
+        heights[i] = height
+        max_height = max(max_height, height)
+
+    return max_height
+          
+    
     
 
 
 def main():
-    # newInput = input("Ievadiet 'I' ja vēlaties ievadīt no tastatūras un 'F', ja ieevade no faila:")
-    while True:
-        newInput = input().strip().upper()
+        
+        newInput = input()
+
         if newInput == "I":
             n = int(input())
             parents = list(map(int,input().split()))
             print(compute_height(n, parents))
+
         elif newInput == "F":
             fileName = input()
             if "a" in fileName:

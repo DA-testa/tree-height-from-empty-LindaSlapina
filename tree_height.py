@@ -43,10 +43,10 @@ def main():
                 print("faila nosaukumā nevar būt burts 'a'")
                 return 1
             try:
-                # with open(fileName) as file:
-                n = int(fileName.readline())
-                parents = list(map(int, fileName.readline().split()))
-                break
+                with open(fileName) as file:
+                    n = int(file.readline())
+                    parents = list(map(int, file.readline().split()))
+                    break
             except FileNotFoundError:
                 print("fails netika atrasts, pārbaudiet faila pareizrakstību")
                 return 1 
@@ -54,7 +54,7 @@ def main():
             print("nepareiza izvēla, ievadiet tikai 'I' vai 'F'")
     height = compute_height(n , parents)
     print(height)            
-
+    return(0)
 
     # implement input form keyboard and from files
     

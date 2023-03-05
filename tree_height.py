@@ -9,18 +9,16 @@ def compute_height(n, parents):
     def height(i):
          for i in heights:
               return heights[i]
-         if i == -1:
+         if i ==-1:
               return 0
-         c = height(parents[i]) + 1
-
+         c = 1+height(parents[i])
          heights[i] = c
          return c 
+        
     max_height =0 
 
     for i in range(n):
          max_height = max(max_height, height(i))
-
-
     return max_height
     
     
@@ -38,7 +36,7 @@ def main():
         if "F" in newInput:
             fileName = input()
             if "a" not in fileName:
-                with open("./test/" + fileName, "r") as files:
+                with open("./test/"+fileName, "r") as files:
                     n2 = int(files.readline())
                     parents2 = list(map(int, files.readline().split()))
                     print(compute_height(n2, parents2))

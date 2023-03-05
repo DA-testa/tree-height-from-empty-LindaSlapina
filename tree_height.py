@@ -8,10 +8,14 @@ def compute_height(n, parents):
     # Write this function
     root - parents.index(-1)
     height = 1 
-    while parents[root] != -1:
-        root = parents[root]
+    while True:
+        child = [i for i in range(n) if parents[i]==root]
+        if not child:
+          return height         
+        root = child[0]
         height = height +1
     return height
+
 
 def main():
     while True:

@@ -32,15 +32,15 @@ def compute_height(n, parents):
 
 def main():
     while True:
-        newInput = input("ievadiet 'I', lai ievadītu no tastatūras vai 'F', lai ievadītu no faila:")
+        newInput = input()
         if newInput == "I":
-            n = int(input("Ievadiet 'node' skaitu:"))
-            parents = list(map(int,input("ievadiet koka vecāku skaitu:")))
+            n = int(input())
+            parents = list(map(int,input()))
             break
         elif newInput == "F":
-            fileName = input("Ievadiet faila nosaukumu:")
+            fileName = input()
             if "a" in fileName:
-                print("faila nosaukumā nevar būt burts 'a'")
+                print()
                 return 1
             try:
                 with open(fileName) as file:
@@ -48,10 +48,8 @@ def main():
                     parents = list(map(int, file.readline().split()))
                     break
             except FileNotFoundError:
-                print("fails netika atrasts, pārbaudiet faila pareizrakstību")
+                print()
                 return 1 
-        else:
-            print("nepareiza izvēla, ievadiet tikai 'I' vai 'F'")
     height = compute_height(n , parents)
     print(height)            
     return(0)

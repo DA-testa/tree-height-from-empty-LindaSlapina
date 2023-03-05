@@ -5,14 +5,17 @@ import threading
 
 
 def compute_height(n, parents):
-    root = parents.index(-1)
-    height = 1 
-    while True:
-        child = [i for i in range(n) if parents[i] == root]
-        if not child:
-            return height
-        height +=1
-        root = child[0]
+    def height(node):
+        if node not in cache:
+            if parents[node] == -1:
+                cache[node] = 1
+            else:
+                cache[node] = 1 + height(parents[node])
+        return cache[node]
+
+    cache = {}
+    return max(height(node) for node in range(len(parents)))
+    
 
 
 def main():

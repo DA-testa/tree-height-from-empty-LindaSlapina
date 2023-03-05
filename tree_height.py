@@ -25,21 +25,15 @@ def main():
         if newInput == "I":
             n = int(input())
             parents = list(map(int,input().split()))
-            break
+            print(compute_height(n, parents))
         elif newInput == "F":
             fileName = input()
             if "a" in fileName:
-                return 1
-            try:
-                with open(fileName) as file:
-                    n = int(file.readline())
-                    parents = list(map(int, file.readline().split()))
-                    break
-            except FileNotFoundError:
-                return 1 
+                with open("./test/" + fileName, "r") as files:
+                    n2 = int(files.readline())
+                    parents2 = list(map(int, files.readline().split()))
+                    print(compute_height(n2, parents2))
 
-    height = compute_height(n , parents)
-    print(height)            
 
 
     # implement input form keyboard and from files

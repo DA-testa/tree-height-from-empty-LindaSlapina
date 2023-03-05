@@ -9,12 +9,16 @@ def compute_height(n, parents):
     def height(i):
         if i in tik:
             return tik[i]
+        
         if i==-1:
             return 0
-        c=1+height(parents[i])
-        tik[i]=c
-        return c
+        kop= height(parents[i]) + 1
+        tik[i]=kop
+        return kop
+    
     max_height=0
+    
+    
     for i in range(n):
         max_height=max(max_height, height(i))
     return max_height

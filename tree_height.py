@@ -11,7 +11,7 @@ def compute_height(n, parents):
         child = [i for i in range(n) if parents[i] == root]
         if not child:
             return height
-        height = height +1
+        height +=1
         root = child[0]
 
 

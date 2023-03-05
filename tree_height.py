@@ -5,42 +5,27 @@ import threading
 
 
 def compute_height(n, parents):
-    # formula
-    root = -1 
-    for i in range(n):
-        if parent[i] == -1:
-            root = i
-            break
-        if root == -1:
-            return 0
-        
+    root = parents.index(-1)
+    height = 1 
+    while True:
+        child = [i for i in range(n) if parents[i] == root]
+        if not child:
+            return height
+        height = height +1
+        root = child[0]
 
-
-    # code  
-    m = [(root,1)]
-    height =0
-    while m:
-        krustp, lim = m.pop(0)
-        tree_height = lim
-        for i in range(n):
-            if parents[i] == krustp:
-                m.append(i,  lim+1)
-            return height        
-
-        
-        
 
 def main():
     while True:
         newInput = input()
         if newInput == "I":
-            n = int(input())
-            parents = list(map(int,input()))
+            n = int(input("Ievadiet krustpunktu skaitu:"))
+            parents = list(map(int,input("Ievadiet vecaku skaitu:")))
             break
         elif newInput == "F":
-            fileName = input()
+            fileName = input("Ievadiet faila nosaukumu:")
             if "a" in fileName:
-                print()
+                print("faila nosaukumā nevar būt burts 'a'")
                 return 1
             try:
                 with open(fileName) as file:
@@ -48,11 +33,13 @@ def main():
                     parents = list(map(int, file.readline().split()))
                     break
             except FileNotFoundError:
-                print()
+                print("fails netika atrasts, pārbaudiet faila pareizrakstību")
                 return 1 
+        else:
+            print("nepareiza izvēla, ievadiet tikai 'I' vai 'F'")
     height = compute_height(n , parents)
     print(height)            
-    return(0)
+
 
     # implement input form keyboard and from files
     

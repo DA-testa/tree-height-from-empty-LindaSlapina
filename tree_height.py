@@ -5,14 +5,14 @@ import threading
 
 
 def compute_height(n, parents):
-    heights = {}
+    tik = {}
     def height(i):
-         for i in heights:
-              return heights[i]
+         for i in tik:
+              return tik[i]
          if i ==-1:
               return 0
          c = 1+height(parents[i])
-         heights[i] = c
+         tik[i] = c
          return c 
     max_height =0 
     for i in range(n):

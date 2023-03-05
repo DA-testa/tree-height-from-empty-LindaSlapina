@@ -31,9 +31,9 @@ def main():
         newInput = input()
 
         if "I" in newInput:
-            n = int(input())
-            parents = list(map(int,input().split()))
-            print(compute_height(n, parents))
+            n1 = int(input())
+            parents1 = list(map(int,input().split()))
+            print(compute_height(n1, parents1))
 
         if "F" in newInput:
             fileName = input()

@@ -26,9 +26,9 @@ def main():
             b = list(map(int,input().split()))
             print(compute_height(a,b))
         if "F" in newinput:
-            fileName = input()
-            if "a" not in fileName:
-                with open("./test/"+fileName, "r") as files:
+            filename = input()
+            if "a" not in filename:
+                with open("./test/"+filename, "r") as files:
                     c = int(files.readline())
                     d = list(map(int, files.readline().split()))
                     print(compute_height(c,d))
